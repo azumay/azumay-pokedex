@@ -1,21 +1,20 @@
 import {useContext, useEffect, useState} from "react";
 import {fetchData} from "../../helpers/fetch";
-import PokemonContext from "../PokemonContext";
+import PokemonContext from "../contexts/PokemonContext";
 
 function PokemonList() {
     const [currentPokemon, setCurrentPokemon] = useState([]);
-    const {pokemon,setPokemon} = useContext(PokemonContext);
+    const {pokemon,setPokemon}=useContext(PokemonContext);
     const upperCase = (text) =>{
         return text.charAt(0).toUpperCase() + text.slice(1)
     };
     const handleChange  = async (e)=>{
         const id=e.target.childNodes[e.target.selectedIndex].getAttribute('id');
         const url="https://pokeapi.co/api/v2/pokemon-species/"+id;
-        console.log(url);
         fetchData(url)
             .then(function (data) {
                 setPokemon(data);
-                console.log(pokemon);
+
             })
             .catch(function (err) {
                 console.error(err);

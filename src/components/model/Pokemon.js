@@ -1,5 +1,5 @@
 import {useEffect, useContext, useState} from "react";
-import PokemonContext from "../PokemonContext";
+import PokemonContext from "../contexts/PokemonContext";
 import {fetchData} from "../../helpers/fetch";
 
 // function Pokemon() {
